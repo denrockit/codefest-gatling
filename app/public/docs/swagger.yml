@@ -1,0 +1,118 @@
+---
+
+swagger: 2.0
+
+info:
+  title: News API
+  description: Sample API for work with news
+  version: 1.0.0
+
+basePath: /
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+  News:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+    required: [title, description]
+
+paths:
+  /healthcheck:
+      get:
+        tags: [Healthcheck]
+        summary: Returns OK message
+        produces: [text/plain; charset=utf-8]
+        responses:
+          200:
+            description: A simple OK response
+
+  /news:
+    get:
+      tags: [News]
+      parameters:
+        - name: offset
+          in: query
+          type: integer
+          default: 0
+        - name: limit
+          in: query
+          type: integer
+          default: 20
+      summary: Returns all news
+      responses:
+        200:
+          description: A list of News entities response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/News'
+    post:
+      tags: [News]
+      summary: Create news
+      parameters:
+        - name: body
+          in: body
+          required: true
+          type: object
+          schema:
+            $ref: '#/definitions/News'
+      responses:
+        201:
+          description: A News entity response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/News'
+  /news/{news_id}:
+    get:
+      tags: [News]
+      summary: Fetch news
+      parameters:
+        - name: news_id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: A News entity response
+          schema:
+            type: object
+            $ref: '#/definitions/News'
+    put:
+      tags: [News]
+      summary: Update news
+      parameters:
+        - name: news_id
+          in: path
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          type: object
+          schema:
+            $ref: '#/definitions/News'
+      responses:
+        204:
+          description: An empty successful response
+    delete:
+      tags: [News]
+      summary: Delete news
+      parameters:
+        - name: news_id
+          in: path
+          required: true
+          type: string
+      responses:
+        204:
+          description: An empty successful response

@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET           /docs/index.html         controllers.Assets.at(path = "/public/docs", file = "index.html")
+GET           /docs/                   controllers.Assets.at(path = "/public/docs", file = "index.html")
+GET           /docs/swagger.yml        controllers.Assets.at(path = "/public/docs", file = "swagger.yml")
+GET           /docs/*file              controllers.Assets.at(path = "/public/lib/swagger-ui", file)
+GET           /docs                    controllers.Default.redirect(to = "/docs/")
+GET           /                        controllers.Default.redirect(to = "/docs/")
+
+GET           /healthcheck             controllers.Healthcheck.status()
+
+GET           /news                    controllers.NewsController.list(offset: Option[Int], limit: Option[Int])
+POST          /news                    controllers.NewsController.create()
+GET           /news/:news_id           controllers.NewsController.item(news_id: Int)
+PUT           /news/:news_id           controllers.NewsController.update(news_id: Int)
+DELETE        /news/:news_id           controllers.NewsController.delete(news_id: Int)

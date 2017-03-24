@@ -1,0 +1,35 @@
+---
+version: '3'
+
+services:
+  db:
+    image: postgres:9.6.2-alpine
+    environment:
+      - LANG=en_US.utf8
+      - POSTGRES_USER=news
+    ports:
+     - "6432:5432"
+
+  app:
+    build: ./app/
+    environment:
+      - JDBC_URL=jdbc:postgresql://db:5432/news
+    depends_on:
+      - db
+    ports:
+     - "9000:9000"
+
+  influxdb:
+    image: influxdb:1.2.1-alpine
+    volumes:
+      - $PWD/metrics/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+    ports:
+     - "2003:2003"
+     - "8086:8086"
+
+  grafana:
+    image: grafana/grafana:4.1.2
+    depends_on:
+      - influxdb
+    ports:
+     - "3000:3000"
