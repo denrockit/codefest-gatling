@@ -62,30 +62,30 @@ $ docker-compose down --volumes --rmi all
 
 1. App overview, see [docs](http://localhost:9000/docs/#/News)
 1. Think about choosing tool for stress testing
-  1. Protocols: stateful or stateless
-  1. Workload models: open or closed
-  1. Test models: hit-based or scenarios
+   1. Protocols: stateful or stateless
+   1. Workload models: open or closed
+   1. Test models: hit-based or scenarios
 1. Gatling base simulation
-  1. Scala SBT project structure
-  1. First HTTP request to fetch all news
-  1. HTTP checks
-  1. Test configuration and HTTP conf definition
-  1. Scenario definition
-  1. Load test with open workload model
+   1. Scala SBT project structure
+   1. First HTTP request to fetch all news
+   1. HTTP checks
+   1. Test configuration and HTTP conf definition
+   1. Scenario definition
+   1. Load test with open workload model
 1. Add request to fetch news by id
-  1. Feeders for dynamic test data
-  1. User's case based scenarios vs request decomposition
-  1. Switches
+   1. Feeders for dynamic test data
+   1. User's case based scenarios vs request decomposition
+   1. Switches
 1. Add request for update news
-  1. User's session
-  1. Debug information
-  1. Templates
+   1. User's session
+   1. Debug information
+   1. Templates
 1. Add requests for create and delete news
-  1. Extract data from response
-  1. Conditions
+   1. Extract data from response
+   1. Conditions
 1. Asserts
 1. Capacity test with closed workload model
-  1. Loops
+   1. Loops
 1. Log request URLs, HTTP codes and response times
 1. Export real-time metrics and create dashboard in [Grafana](http://localhost:3000/dashboard/db/gatling)
 
