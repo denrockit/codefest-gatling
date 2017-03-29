@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Нагрузочное тестирование с Gatling с нуля</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-55877254-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Нагрузочное тестирование с Gatling с нуля</h1>
+		<p><a href="https://dentrifonov.github.io">Денис Трифонов</a>, <a href="https://2gis.ru">2ГИС</a></p>
+	</header>
+	<section class="slide cover" id="title"><div>
+		<h2>Нагрузочное тестирование<br>с Gatling с нуля</h2>
+		<p>Денис Трифонов</p>
+		<div><span></span><img src="images/gatling-logo.png" alt="Gatling Logo" width="85%"></div>
+		<img src="images/2gis-cover.png" alt="2GIS Logo">
+		<style>
+			#title h2 {
+				position: relative;
+				top: 200px;
+				left: 40px;
+			}
+			#title p {
+				position: relative;
+				top: 200px;
+				left: 40px;
+				font-size: 32px;
+			}
+			#title div div {
+				width: 250px;
+				height: 250px;
+				position: relative;
+				top: -120px;
+				left: 575px;
+				background: #A6CE38;
+				border-radius: 50%;
+				white-space: nowrap;
+				text-align: center;
+			}
+			#title div div span {
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+			#title div div img {
+				z-index: auto;
+				vertical-align: middle;
+				position: static;
+			}
+		</style>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Обо мне</h2>
+		<p>Занимаюсь тестированием производительности бэкендов внешних продуктов 2ГИС. Пришел в нагрузку из команд Справочного API и Continuous Delivery.</p>
+	</div></section>
+	<section class="slide shout" id="objective"><div>
+		<h2>&bdquo;Нагрузочные тесты, как и функциональные, нужно писать, поддерживать и выполнять&ldquo;</h2>
+		<style>
+			#objective div {
+				background-color: #00b2dd;
+			}
+			#objective h2 {
+				font-size: 300%;
+				color: #fff;
+			}
+		</style>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Gatling в России</h2>
+		<ul>
+			<li>2ГИС
+				<ul>
+					<li>Онлайн ПК и мобильная версия 2ГИС</li>
+					<li>Бекенды Справочного API, Карт, Фото, Мессенджера, Авторизации, Избранного и ещё десятки других проектов</li>
+				</ul>
+			</li>
+			<li>Tinkoff.ru
+				<ul>
+					<li><a href="https://habrahabr.ru/company/tinkoff/blog/323316/">Статья на Хабрахабр</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Тестирование <a href="http://localhost:9000/docs/#/News">News API</a></h2>
+		<ul>
+			<li>Получение коллекции</li>
+			<li>Получение записи</li>
+      <li>Обновление записи</li>
+			<li>Создание записи</li>
+			<li>Удаление записи</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Получение коллекции (демо)</h2>
+		<ul>
+			<li>HTTP запрос</li>
+			<li>Проверки</li>
+			<li>Сценарий</li>
+			<li>Конфигурация теста</li>
+			<li>Симуляция</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Получение записи (демо)</h2>
+		<ul>
+			<li>Тестовые данные</li>
+			<li>Модели пользовательских сценариев и отдельных запросов</li>
+			<li>Ветвления</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Обновление записи (демо)</h2>
+		<ul>
+			<li>Сессия виртуального пользователя</li>
+      <li>Шаблоны</li>
+			<li>Логирование</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Создание и удаление записи (демо)</h2>
+		<ul>
+			<li>Извлечение данных из ответа</li>
+			<li>Условия</li>
+      <li>Ассерты</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>В довесок (демо)</h2>
+		<ul>
+			<li>Экспорт реал-тайм метрик и <a href="http://localhost:3000/dashboard/db/gatling">дашборд</a> в Grafana</li>
+			<li>Логирование URL запросов, HTTP коды и времена ответов</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Резюме</h2>
+		<ul>
+      <li>Gatling достоен внимания как инструмент для тестирования HTTP сервисов (также умеет WebSockets, SSE и JMS)</li>
+			<li>Нагрузочные тесты как код</li>
+			<li>Нагрузочные тесты как функциональные тесты</li>
+			<li>Простой DSL и вся мощь Scala при необходимости</li>
+			<li>Средства отладки и расширенного логирования</li>
+			<li>Реал-тайм статистика по протоколу Graphite и HTML-отчёты</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Что дальше</h2>
+		<ul>
+      <li>Интеграция в CI/CD</li>
+			<li>Другие виды тестов (стресс, всплеск, стабильность и т.д.)</li>
+      <li>Разделить создание и удаление записи (удаляемые записи необходимо подготовить до теста)</li>
+			<li>Пагинация в получении коллекции</li>
+			<li>А как оно в жизни на бою: вместо последовательного чтения у нас популярные записи и страницы новостей...</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Если проектов десятки</h2>
+		<ul>Пример тестовой инфраструктуры 2ГИС:
+      <li>Код и автоматизация в GitLab</li>
+			<li>Shared Runners для нагрузочных тестов</li>
+			<li>Изолированное пространство для приложений</li>
+      <li>Подготовленные мониторинг и дашборд</li>
+			<li>Сохранение HTML-отчётов в артефакты, экспорт логов тестов для хранения истории и дальнейшей аналитики</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Если проектов десятки</h2>
+		<p>Поставить новый проект на конвеер &mdash; дело часа,<br>от команды требуются только тесты и приложение</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Материалы</h2>
+		<ul>
+      <li><a href="https://github.com/dentrifonov/codefest-gatling">Код (расширенная версия) и слайды этого доклада</a></li>
+      <li><a href="http://gatling.io/documentation/">Полная документация Gatling</a></li>
+    </ul>
+    <ul>
+			<li><a href="https://events.yandex.ru/lib/talks/1733/">Нагрузочное тестирование типичного интернет-сервиса,<br>Андрей Похилько, Яндекс</a></li>
+			<li><a href="https://www.youtube.com/watch?v=3PWBBc7rZxw">Подводные камни в нагрузочном тестировании,<br>Владимир Ситников, Гейзенбаг 2016</a></li>
+		</ul>
+	</div></section>
+	<section class="slide cover" id="contacts"><div>
+		<h2>Денис Трифонов</h2>
+		<p>
+			de.trifonov@2gis.ru<br>
+			<a href="https://dentrifonov.github.io">dentrifonov.github.io</a>
+		</p>
+		<div><span></span><h2>Спасибо!</h2></div>
+		<img src="images/2gis-cover.png" alt="2GIS Logo">
+		<style>
+			#contacts h2 {
+				position: relative;
+				top: 200px;
+				left: 40px;
+			}
+			#contacts p {
+				position: relative;
+				top: 200px;
+				left: 40px;
+				font-size: 32px;
+			}
+			#contacts div div {
+				width: 250px;
+				height: 250px;
+				position: relative;
+				top: -120px;
+				left: 550px;
+				background: #00b2dd;
+				border-radius: 50%;
+				white-space: nowrap;
+				text-align: center;
+				vertical-align: middle;
+			}
+			#contacts div div span {
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+			#contacts div div h2 {
+				z-index: auto;
+				vertical-align: middle;
+				position: static;
+				display: inline-block;
+				margin-bottom: 0;
+				color: #fff;
+			}
+		</style>
+	</div></section>
+	<div class="progress"><div></div></div>
+	<script src="node_modules/shower-core/shower.min.js"></script>
+	<script type="text/javascript">
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function() {
+				try {
+					w.yaCounter26725989 = new Ya.Metrika({
+						id:26725989
+					});
+				} catch(e) { }
+			});
+			var n = d.getElementsByTagName("script")[0],
+					s = d.createElement("script"),
+					f = function () { n.parentNode.insertBefore(s, n); };
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+			if (w.opera == "[object Opera]") {
+				d.addEventListener("DOMContentLoaded", f, false);
+			} else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+	</script>
+	<noscript><div><img src="//mc.yandex.ru/watch/26725989" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</body>
+</html>

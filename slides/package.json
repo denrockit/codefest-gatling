@@ -1,0 +1,15 @@
+{
+	"author": {
+		"name": "Denis Trifonov",
+		"url": "https://github.com/dentrifonov"
+	},
+	"homepage": "https://dentrifonov.github.io/highway-to-ci",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/dentrifonov/highway-to-ci.git"
+	},
+	"dependencies": {
+		"shower-core": "1.0.7",
+		"shower-ribbon": "1.0.11"
+	}
+}

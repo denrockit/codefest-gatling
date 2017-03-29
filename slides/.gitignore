@@ -1,0 +1,6 @@
+node_modules/shower-core/*
+!node_modules/shower-core/shower.min.js
+node_modules/shower-ribbon/*
+!node_modules/shower-ribbon/fonts
+!node_modules/shower-ribbon/images
+!node_modules/shower-ribbon/styles

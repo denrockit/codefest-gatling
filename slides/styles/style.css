@@ -1,0 +1,74 @@
+@font-face {
+	font-family: 'Suisse';
+	font-weight: normal;
+	src: url(../fonts/suisseintl_cond.ttf) format("truetype");
+}
+@font-face {
+	font-family: 'Suisse Bold';
+	font-weight: bold;
+	src: url(../fonts/suisseintl_cond_bold.ttf) format("truetype");
+}
+
+.slide h2, .slide p, .slide li {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	color: #343534;
+}
+.slide span.integer {
+	font-family: 'Suisse Bold', sans-serif;
+	font-weight: bold;
+}
+
+.caption {
+	color: #fff;
+	text-shadow: 0 1px 1px #8d8e90;
+}
+.caption h1 {
+	font-family: 'Suisse Bold', sans-serif;
+}
+.caption a {
+	color: #00b2dd;
+	text-shadow: 0 1px 1px #1f3f60;
+}
+.caption a:hover {
+	color: #00c7f7;
+}
+
+.slide h2 {
+	font-family: 'Suisse', sans-serif;
+	font-weight: normal;
+}
+
+.list {
+	background: #a6ce38 url(../images/background.png);
+}
+.list .slide:after {
+	color: #fff;
+}
+.list .slide:target:before {
+	box-shadow: 0 0 0 1px #0089aa, 0 0 0 10px #00b2dd, 0 20px 50px rgba(109, 110, 112, 0.6);
+	-webkit-box-shadow: 0 0 0 1px #0089aa, 0 0 0 10px #00b2dd, 0 20px 50px rgba(109, 110, 112, 0.6);
+}
+.list .slide:target:after {
+	text-shadow: 0 1px 1px #1f3f60;
+	color: #00b2dd;
+}
+.slide:after {
+	border-radius: 50px;
+	position: absolute;
+	top: 30px;
+	right: 119px;
+	padding: 0;
+	line-height:50px;
+	width: 50px;
+	height: 50px;
+	background: #a6ce38;
+	counter-increment: slide;
+	content: counter(slide);
+	text-align: center;
+}
+
+.full .progress div {
+	border-bottom-color: #00b2dd;
+}
+.full .progress div[style*='100%']{left:-10px}
+
