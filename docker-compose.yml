@@ -20,7 +20,7 @@ services:
      - "9000:9000"
 
   influxdb:
-    image: influxdb:1.2.1-alpine
+    image: influxdb:1.6.4-alpine
     volumes:
       - $PWD/metrics/influxdb.conf:/etc/influxdb/influxdb.conf:ro
     ports:
@@ -28,7 +28,7 @@ services:
      - "8086:8086"
 
   grafana:
-    image: grafana/grafana:4.1.2
+    image: grafana/grafana:4.6.4
     depends_on:
       - influxdb
     ports:
