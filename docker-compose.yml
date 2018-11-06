@@ -3,12 +3,12 @@ version: '3'
 
 services:
   db:
-    image: postgres:9.6.2-alpine
+    image: postgres:9.6.10-alpine
     environment:
       - LANG=en_US.utf8
       - POSTGRES_USER=news
     ports:
-     - "6432:5432"
+     - "6433:5432"
 
   app:
     build: ./app/

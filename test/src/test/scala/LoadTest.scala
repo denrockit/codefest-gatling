@@ -23,6 +23,5 @@ class LoadTest extends Simulation {
 	)
 
 	setUp(scn().inject(injectionSteps).protocols(httpConf))
-		.maxDuration(45 seconds)
 		.assertions(asserts)
 }

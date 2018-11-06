@@ -36,7 +36,7 @@ $ docker-compose ps
 Name                         Command                         State   Ports                      
 -------------------------------------------------------------------------------------------------------------------
 codefestgatling_app_1        bin/app                         Up      0.0.0.0:9000->9000/tcp                         
-codefestgatling_db_1         docker-entrypoint.sh postgres   Up      0.0.0.0:6432->5432/tcp                         
+codefestgatling_db_1         docker-entrypoint.sh postgres   Up      0.0.0.0:6433->5432/tcp                         
 codefestgatling_grafana_1    /run.sh                         Up      0.0.0.0:3000->3000/tcp                         
 codefestgatling_influxdb_1   /entrypoint.sh influxd          Up      0.0.0.0:2003->2003/tcp, 0.0.0.0:8086->8086/tcp
 ```
