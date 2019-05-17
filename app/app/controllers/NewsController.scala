@@ -1,17 +1,15 @@
 package controllers
 
-import javax.inject.Inject
-
 import dao.NewsDAO
+import javax.inject.Inject
 import models.News
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.json.{JsError, JsValue, Json}
-import play.api.mvc.{Action, AnyContent, Controller}
+import play.api.mvc.{Action, AnyContent, InjectedController}
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
-class NewsController @Inject()(protected val newsDAO: NewsDAO)
-	extends Controller {
+class NewsController @Inject()(protected val newsDAO: NewsDAO)(implicit ec: ExecutionContext)
+	extends InjectedController {
 
 	def list(offset: Option[Int], limit: Option[Int]): Action[AnyContent] = Action.async {
 		newsDAO.all(offset.getOrElse(0), limit.getOrElse(20)).map(r => Ok(Json.toJson(r)))

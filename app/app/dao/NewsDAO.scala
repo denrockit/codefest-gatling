@@ -1,16 +1,14 @@
 package dao
 
 import javax.inject.Inject
-
 import models.News
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.jdbc.JdbcProfile
 import slick.lifted.ProvenShape
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
-class NewsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
+class NewsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext)
 	extends HasDatabaseConfigProvider[JdbcProfile] {
 
 	import dbConfig.profile.api._

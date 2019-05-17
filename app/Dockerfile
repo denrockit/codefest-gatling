@@ -1,8 +1,8 @@
-FROM lustefaniak/sbt:0.13.13_2.11.8
+FROM hseeberger/scala-sbt:8u181_2.12.8_1.2.8
 
 ADD . /app/
 
-RUN sbt stage
+RUN cd /app && sbt stage
 
 WORKDIR /app/target/universal/stage
 
