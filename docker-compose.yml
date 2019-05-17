@@ -3,7 +3,7 @@ version: '3'
 
 services:
   db:
-    image: postgres:9.6.10-alpine
+    image: postgres:9.6.13-alpine
     environment:
       - LANG=en_US.utf8
       - POSTGRES_USER=news
@@ -22,7 +22,7 @@ services:
   influxdb:
     image: influxdb:1.6.4-alpine
     volumes:
-      - $PWD/metrics/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - ./metrics/influxdb.conf:/etc/influxdb/influxdb.conf:ro
     ports:
      - "2003:2003"
      - "8086:8086"
